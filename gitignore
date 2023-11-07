@@ -1,0 +1,27 @@
+# Node.js
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+
+# Dependency directory
+public/
+coverage/
+
+# Mac OS
+.DS_Store
+
+# Editor directories
+.vscode/
+.idea/
+
+# OS generated files
+Thumbs.db
+
+# System files
+npm-debug.log
+yarn-error.log

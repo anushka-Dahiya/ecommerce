@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+  <!-- Include the header partial -->
+  <%- include('partials/header' , {category : category , isAuthenticated : userIsLoggedIn}) %>
+
+  <!-- Your home page content here -->
+  <div class="mx-4 my-4">
+    <div class="card-deck">
+        <% if (products) { %>
+        <ul>
+            <div class="row my-4">
+            <% products.forEach(product => { %>
+                <div class="col-md-3">
+              
+                <div class="card my-3">
+                    <img class="card-img-top card-img-custom" src="<%= product.images && product.images[0] %>" alt="Card image cap">
+                    <div class="card-body">
+                      <div class="row">
+                         <div class="col-md-6">
+                          <button type="button" class="btn btn-danger btn-sm"><%=product.discountPercentage%> % OFF</button>
+                         </div>
+                         <div class="col-md-6">
+                          <div class="d-flex justify-content-end">
+                            <button type="button" class="btn-sm btn-info " > <a style="color:white !important"href="/product-details/<%= product._id %>">Details</a></button>
+                          </div>
+                         </div>
+                      </div>
+                      <h5 class="card-title"><%= product.title %></h5>
+                      <p class="card-text"><%= product.description %></p>
+                    </div>
+                    <div class="card-footer">
+                      <div class="row">
+  <div class="col-md-6"> 
+    Price : &#8377;<%=product.price*83%>
+  </div>
+  <div class="col-md-6 ml-6">
+    <div class="d-flex justify-content-end">
+      <button class="cartbtn" onclick="addToCart('<%= product._id %>')">
+          <!-- Your SVG content here -->
+          <svg id="icon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#f1efef}</style><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
+       
+      </button>
+    </div>
+  </div>
+</div>
+                          
+                      </div>
+                    </div>
+                </div>
+            <% }); %>
+        </ul>
+    <%}%>
+    </div>
+      </div>
+   
+  </div>
+  
+  <script>
+   const userIsLoggedIn = "<%=userIsLoggedIn%>";
+   console.log(userIsLoggedIn, "ysdbj")
+   function addToCart(productId) {
+  if (userIsLoggedIn == "true") { 
+    console.log("added to cart" , userIsLoggedIn);
+    window.location.href = '/';
+  } else {
+    window.location.href = '/login';
+  } 
+}
+  </script>
+</body>
+</html>

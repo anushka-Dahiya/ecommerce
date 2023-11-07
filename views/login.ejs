@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body >
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <form class="form" style="width: 70%;" method="POST" action="/signin">
+            <p class="title">Login </p>
+              
+                <label>
+                    <input required="" placeholder="" type="text" class="input" name="username">
+                    <span>Username</span>
+                </label> 
+                    
+                <label>
+                    <input required="" placeholder="" type="password" class="input" name="password">
+                    <span>Password</span>
+                </label>
+            
+            <button class="submit">Submit</button>
+            <p>Not yet registered?! , <a href="/register" style="color: #17A2B8;"> Register Now</a></p>
+            <a href="/" style="color: aliceblue;">Go Back</a>
+            <!-- <p class="signin">Already have an acount ? <a href="#">Signin</a> </p> -->
+        </form>
+        
+    </div>
+   
+</body>
+</html>
